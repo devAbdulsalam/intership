@@ -31,14 +31,14 @@ const Interns = () => {
 	};
 	const submitHandler = async (formValues) => {
 		if (!imageFile) {
-			return toast.success('Image is required');
+			return toast.error('Image is required');
 		}
-		setLoading(true);
 		const formData = new FormData();
 		for (const key in formValues) {
 			formData.append(key, formValues[key]);
 		}
 		formData.append('image', imageFile);
+		setLoading(true);
 		axios
 			.post('/api/user/login', formData, config)
 			.then(() => {
