@@ -1,5 +1,5 @@
 // import { useEffect } from 'react';
-import stemImage from '../assets/stem2.png';
+import stemImage from '../assets/presentation.jpg';
 import { Link } from 'react-router-dom';
 const Home = () => {
 	// const navigate = useNavigate();
@@ -15,9 +15,13 @@ const Home = () => {
 				backgroundImage: stemImage,
 			}}
 		>
-			<div className="absolute bg-black opacity-60 inset-0 z-0"></div>
-			<h2>WelCome</h2>
-			<Link to="/register">Register</Link>
+			{/* <div className="absolute bg-black opacity-60 inset-0 z-0"></div> */}
+			<div className="z-10">
+				<h2>WelCome</h2>
+				<Link to="/register">Register</Link>
+				<br />
+				<Link to="/login">Login</Link>
+			</div>
 		</div>
 	);
 };

@@ -1,8 +1,13 @@
 import { useForm } from 'react-hook-form';
+import stemImage from '../assets/presentation.jpg';
 const Login = () => {
-	const { register, handleSubmit, errors } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
-	const onSubmit = (data) => {
+	const submitHandler = (data) => {
 		console.log(data); // Handle form submission logic here
 	};
 	return (
@@ -10,8 +15,8 @@ const Login = () => {
 			<div
 				className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center"
 				style={{
-					backgroundImage:
-						'url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)',
+					backgroundImage: stemImage,
+					// 'url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)',
 				}}
 			>
 				<div className="absolute bg-black opacity-60 inset-0 z-0"></div>
@@ -66,8 +71,8 @@ const Login = () => {
 				<div
 					className="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
 					style={{
-						backgroundImage:
-							'url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)',
+						backgroundImage: stemImage,
+						// 'url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)',
 					}}
 				>
 					<div className="absolute bg-black opacity-60 inset-0 z-0"></div>
@@ -87,17 +92,21 @@ const Login = () => {
 					</div>
 					<p className="text-gray-100">or use email your account</p>
 					<form
-						onSubmit={handleSubmit(onSubmit)}
+						onSubmit={handleSubmit(submitHandler)}
 						className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto"
 					>
 						<div className="pb-2 pt-4">
 							<input
 								type="tel"
 								name="phoneNumber"
-								ref={register({ required: 'Phone number is required' })}
+								{...register('phoneNumber', {
+									required: 'Phone number is required',
+								})}
 								className="block w-full p-4 text-lg rounded-sm bg-black"
 							/>
-							{errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+							{errors.phoneNumber && (
+								<p className="text-red-500">{errors.phoneNumber.message}</p>
+							)}
 						</div>
 						<div className="pb-2 pt-4">
 							<input
@@ -106,9 +115,11 @@ const Login = () => {
 								name="password"
 								id="password"
 								placeholder="Password"
-								ref={register({ required: 'Password is required' })}
+								{...register('password', { required: 'Password is required' })}
 							/>
-							{errors.password && <p>{errors.password.message}</p>}
+							{errors.password && (
+								<p className="text-red-500">{errors.password.message}</p>
+							)}
 						</div>
 						<div className="text-right text-gray-400 hover:underline hover:text-gray-100">
 							<a href="#">Forgot your password?</a>
