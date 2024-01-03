@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
-import stemImage from '../assets/stem.png';
+import stemImage from '../assets/Stem.png';
 import Loading from '../components/Loading';
 import SelectStateAndLGA from '../components/SelectStateAndLGA';
 import { useState } from 'react';
