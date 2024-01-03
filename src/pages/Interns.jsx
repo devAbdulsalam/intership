@@ -30,8 +30,8 @@ const Interns = () => {
 				toast.success('Registration sucessfull');
 				console.log(data);
 				setTimeout(() => {
-					history.go(0);
 					window.location.reload(false);
+					history.go(0);
 				}, 200);
 				setLoading(false);
 			} else {
