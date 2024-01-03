@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import stemImage from './../assets/Stem2.png';
 import Loading from '../components/Loading';
+import ConfirmModal from '../components/ConfirmModal';
 import SelectStateAndLGA from '../components/SelectStateAndLGA';
 import { useState } from 'react';
 import { programs } from './data';
@@ -12,7 +12,9 @@ const Interns = () => {
 	const [selectedState, setSelectedState] = useState('');
 	const [selectedLga, setSelectedLga] = useState('');
 	const [selectedProgram, setSelectedProgram] = useState('');
+	const [user, setUser] = useState('');
 	const [programInfo, setProgramInfo] = useState('');
+	const [showModal, setShowModal] = useState(false);
 	const apiUrl = import.meta.env.VITE_API_URL;
 	const phoneRegExp = /^(\+\d{1,4})?\d{10,11}$/;
 	const {
@@ -21,46 +23,35 @@ const Interns = () => {
 		formState: { errors },
 	} = useForm();
 	const submitHandler = async (formValues) => {
+		setLoading(true);
+
 		try {
-			setLoading(true);
-			const response = await axios.post(apiUrl, formValues, {
+			const response = await fetch(apiUrl, {
+				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					withCredentials: true,
 				},
+				// Include other fetch options if needed
+				body: JSON.stringify(formValues),
 			});
 
-			// Check if the request was successful (status code 2xx)
-			if (response.status >= 200 && response.status < 300) {
-				// Display a success message and handle successful response data
+			if (response.ok) {
+				const data = await response.json();
 				toast.success('Registration successful');
-				console.log(response.data);
-				setTimeout(() => {
-					window.location.reload(false);
-				}, 200);
+				setUser(data?.name);
+				setShowModal(true);
 			} else {
-				// Handle unexpected status codes (non-2xx)
-				toast.error(`Unexpected response: ${response.status}`);
+				toast.error(`Unexpected Error Occur`);
+				console.log(response.status);
 			}
 		} catch (error) {
-			// Handle network errors, request cancellation, or unexpected errors
-			if (axios.isCancel(error)) {
-				console.log('Request canceled:', error.message);
-			} else if (error.response) {
-				// The request was made, but the server responded with an error status
-				toast.error(`Server error: ${error.response.status}`);
-				console.log('Data:', error.response.data);
-				console.log('Headers:', error.response.headers);
-			} else {
-				// Something happened in setting up the request that triggered an Error
-				toast.error(`Unexpected error: ${error.message}`);
-				console.log('Error:', error.message);
-			}
+			toast.error(error?.message || error?.msg || 'Something went wrong!');
+			console.log(error);
 		} finally {
-			// Set loading state to false, regardless of the request outcome
 			setLoading(false);
 		}
 	};
+
 	const showProgramInfo = (event) => {
 		const selectedProgramName = event.target.value;
 		setSelectedProgram(selectedProgramName);
@@ -241,11 +232,11 @@ const Interns = () => {
 									htmlFor="programe"
 									className="text-gray-800 font-semibold"
 								>
-									Select Programe
+									Select Programme
 								</label>
 								<select
-									{...register('programe', {
-										required: 'Please select a programe',
+									{...register('programme', {
+										required: 'Please select a programme',
 									})}
 									onChange={showProgramInfo}
 									className="w-full px-3 my-2 py-2 text-lg inline-block font-normal text-gray-500 bg-clip-padding border-2 border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
@@ -277,7 +268,7 @@ const Interns = () => {
 							</div>
 							<div className="space-y-4 mt-2">
 								<button
-									className="rounded w-full mx-auto bg-primary py-2 px-4 text-xl font-semibold text-white shadow outline-none hover:bg-primary-light"
+									className="rounded w-full mx-auto bg-primary hover:bg-primary-light py-2 px-4 text-xl font-semibold text-white shadow outline-none "
 									disabled={loading}
 									type="submit"
 								>
@@ -288,6 +279,12 @@ const Interns = () => {
 					</div>
 				</div>
 			</div>
+			<ConfirmModal
+				show={showModal}
+				setShow={setShowModal}
+				user={user}
+				setUser={setUser}
+			/>
 			{loading && <Loading />}
 		</>
 	);
