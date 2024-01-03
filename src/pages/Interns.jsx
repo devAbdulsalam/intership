@@ -21,20 +21,43 @@ const Interns = () => {
 		formState: { errors },
 	} = useForm();
 	const submitHandler = async (formValues) => {
-		setLoading(true);
 		try {
-			const { data } = await axios.post(apiUrl, formValues);
-			if (data) {
-				toast.success('Registration sucessfull');
-				console.log(data);
-				setLoading(false);
+			setLoading(true);
+			const response = await axios.post(apiUrl, formValues, {
+				headers: {
+					'Content-Type': 'application/json',
+					withCredentials: true,
+				},
+			});
+
+			// Check if the request was successful (status code 2xx)
+			if (response.status >= 200 && response.status < 300) {
+				// Display a success message and handle successful response data
+				toast.success('Registration successful');
+				console.log(response.data);
 				setTimeout(() => {
 					window.location.reload(false);
 				}, 200);
+			} else {
+				// Handle unexpected status codes (non-2xx)
+				toast.error(`Unexpected response: ${response.status}`);
 			}
 		} catch (error) {
-			toast.error(error.message || 'Something went wrong!');
-			console.log(error);
+			// Handle network errors, request cancellation, or unexpected errors
+			if (axios.isCancel(error)) {
+				console.log('Request canceled:', error.message);
+			} else if (error.response) {
+				// The request was made, but the server responded with an error status
+				toast.error(`Server error: ${error.response.status}`);
+				console.log('Data:', error.response.data);
+				console.log('Headers:', error.response.headers);
+			} else {
+				// Something happened in setting up the request that triggered an Error
+				toast.error(`Unexpected error: ${error.message}`);
+				console.log('Error:', error.message);
+			}
+		} finally {
+			// Set loading state to false, regardless of the request outcome
 			setLoading(false);
 		}
 	};
