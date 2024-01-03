@@ -31,14 +31,11 @@ const Interns = () => {
 				setTimeout(() => {
 					window.location.reload(false);
 				}, 200);
-			} else {
-				toast.error('error.message' || 'Something went wrong!');
-				console.log('error');
-				setLoading(false);
 			}
 		} catch (error) {
 			toast.error(error.message || 'Something went wrong!');
 			console.log(error);
+			setLoading(false);
 		}
 	};
 	const showProgramInfo = (event) => {
@@ -67,7 +64,7 @@ const Interns = () => {
 							src={stemImage}
 							alt="stemLab"
 						/>
-						<h2 className="text-center text-2xl md:text-xl font-semibold mb-6 text-white uppercase">
+						<h2 className="text-center text-xl md:text-2xl font-semibold mb-6 text-white uppercase">
 							Internship Registeration Form
 						</h2>
 						<form
