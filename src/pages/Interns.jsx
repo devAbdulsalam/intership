@@ -1,56 +1,48 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import stemImage from '../assets/stem.png';
-import { HiArrowNarrowLeft } from 'react-icons/hi';
 import Loading from '../components/Loading';
 import SelectStateAndLGA from '../components/SelectStateAndLGA';
 import { useState } from 'react';
-import AddImage from '../components/AddImage';
 import { programs } from './data';
 
 const Interns = () => {
-	const navigate = useNavigate();
+	const history = useHistory();
 	const [loading, setLoading] = useState(false);
-	const [imageFile, setImageFile] = useState(null);
 	const [selectedState, setSelectedState] = useState('');
 	const [selectedLga, setSelectedLga] = useState('');
 	const [selectedProgram, setSelectedProgram] = useState('');
 	const [programInfo, setProgramInfo] = useState('');
-	const phoneRegExp = /^(?:\d{11})$/;
+	const apiUrl = import.meta.env.VITE_API_URL;
+	const phoneRegExp = /^(\+\d{1,4})?\d{10,11}$/;
 	const {
 		handleSubmit,
 		register,
 		formState: { errors },
 	} = useForm();
-	const config = {
-		headers: {
-			'Content-Type': 'multipart/form-data',
-		},
-	};
 	const submitHandler = async (formValues) => {
-		if (!imageFile) {
-			return toast.error('Image is required');
-		}
-		const formData = new FormData();
-		for (const key in formValues) {
-			formData.append(key, formValues[key]);
-		}
-		formData.append('image', imageFile);
 		setLoading(true);
-		axios
-			.post('/api/user/login', formData, config)
-			.then(() => {
+		try {
+			const { data } = await axios.post(apiUrl, formValues);
+			if (data) {
 				toast.success('Registration sucessfull');
+				console.log(data);
 				setTimeout(() => {
-					navigate('/');
+					history.go(0);
+					window.location.reload(false);
 				}, 200);
-			})
-			.catch((error) => {
-				toast.error(error.message || 'Something went wrong!');
-			})
-			.finally(() => setLoading(false));
+				setLoading(false);
+			} else {
+				toast.error('error.message' || 'Something went wrong!');
+				console.log('error');
+				setLoading(false);
+			}
+		} catch (error) {
+			toast.error(error.message || 'Something went wrong!');
+			console.log(error);
+		}
 	};
 	const showProgramInfo = (event) => {
 		const selectedProgramName = event.target.value;
@@ -70,23 +62,17 @@ const Interns = () => {
 	};
 	return (
 		<>
-			<div className="flex justify-center items-center w-full  bg-slate-50 overflow-y-auto">
+			<div className="flex justify-center items-center w-full min-h-screen overflow-y-auto gem">
 				<div className="px-2 py-4 z-10 shadow h-full w-[768px] mx-auto">
-					<div className="my-2">
-						<Link to="/" className="">
-							<HiArrowNarrowLeft className="h-6 w-6 text-primary" />
-						</Link>
-					</div>
 					<div className="mx-auto">
 						<img
 							className="mx-auto my-10 md:my-4"
 							src={stemImage}
 							alt="stemLab"
 						/>
-						<h2 className="text-center text-2xl md:text-xl font-semibold mb-6 text-primary">
+						<h2 className="text-center text-2xl md:text-xl font-semibold mb-6 text-white uppercase">
 							Internship Registeration Form
 						</h2>
-						<AddImage setImageFile={setImageFile} />
 						<form
 							className="mx-auto px-5 bg-white py-8 rounded-md mb-6"
 							onSubmit={handleSubmit(submitHandler)}
@@ -274,7 +260,7 @@ const Interns = () => {
 							</div>
 							<div className="space-y-4 mt-2">
 								<button
-									className="rounded w-full mx-auto bg-primary py-2 px-4 text-xl font-semibold text-white shadow outline-none hover:bg-primary-light  active:bg-primary"
+									className="rounded w-full mx-auto bg-primary py-2 px-4 text-xl font-semibold text-white shadow outline-none hover:bg-primary-light"
 									disabled={loading}
 									type="submit"
 								>

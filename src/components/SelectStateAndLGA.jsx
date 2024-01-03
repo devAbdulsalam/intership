@@ -56,9 +56,9 @@ const SelectStateAndLGA = ({
 						</option>
 					))}
 				</select>
-				{/* {errors.state && (
+				{errors.state && (
 					<div className="text-red-500">{errors.state.message}</div>
-				)} */}
+				)}
 			</div>
 			<div className="w-full">
 				<label htmlFor="lga-select" className="text-gray-800 font-semibold">

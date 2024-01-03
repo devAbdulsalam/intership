@@ -115,7 +115,12 @@ const Login = () => {
 								name="password"
 								id="password"
 								placeholder="Password"
-								{...register('password', { required: 'Password is required' })}
+								{...register('password', {
+									required: 'Please enter password',
+									minLength: {
+										value: 6, message: 'password is more than 5 chars'
+									}
+								})}
 							/>
 							{errors.password && (
 								<p className="text-red-500">{errors.password.message}</p>
