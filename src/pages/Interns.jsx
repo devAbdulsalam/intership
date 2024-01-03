@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useHistory } from 'react-router-dom';
 import stemImage from './../assets/Stem2.png';
 import Loading from '../components/Loading';
 import SelectStateAndLGA from '../components/SelectStateAndLGA';
@@ -9,7 +8,6 @@ import { useState } from 'react';
 import { programs } from './data';
 
 const Interns = () => {
-	const history = useHistory();
 	const [loading, setLoading] = useState(false);
 	const [selectedState, setSelectedState] = useState('');
 	const [selectedLga, setSelectedLga] = useState('');
@@ -31,7 +29,6 @@ const Interns = () => {
 				console.log(data);
 				setTimeout(() => {
 					window.location.reload(false);
-					history.go(0);
 				}, 200);
 				setLoading(false);
 			} else {
