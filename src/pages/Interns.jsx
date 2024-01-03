@@ -27,10 +27,10 @@ const Interns = () => {
 			if (data) {
 				toast.success('Registration sucessfull');
 				console.log(data);
+				setLoading(false);
 				setTimeout(() => {
 					window.location.reload(false);
 				}, 200);
-				setLoading(false);
 			} else {
 				toast.error('error.message' || 'Something went wrong!');
 				console.log('error');
