@@ -53,4 +53,22 @@ export const programs = [
 			'Building Cross-Platform Mobile Apps',
 		],
 	},
+	{
+		name: 'Blockchain Technology',
+		courses: [
+			'Blockchain protocols',
+			'Smart contracts',
+			'DApps: decentralized applications built on a blockchain',
+			'Consensus mechanisms',
+		],
+	},
+	{
+		name: 'Cyber Security',
+		courses: [
+			'Cyber Security Fundamentals',
+			'Networking for Cyber security',
+			'Authentication, Authorization and Penetration testing',
+			'Introduction to Web Security',
+		],
+	},
 ];
