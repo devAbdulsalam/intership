@@ -38,8 +38,6 @@ const SelectStateAndLGA = ({
 					State of Origin
 				</label>
 				<select
-					placeholder="Select State"
-					autoComplete="off"
 					name="state"
 					id="state"
 					// value={selectedState}
@@ -47,7 +45,7 @@ const SelectStateAndLGA = ({
 						required: 'Please select your state of origin',
 					})}
 					onChange={handleSelectOptionChange}
-					className="input w-full h-[44px] rounded-md border border-gray px-6 text-base"
+					className="w-full px-3 my-2 py-2 text-lg inline-block font-normal text-gray-500 bg-clip-padding border-2 border-primary-light rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-primary focus:outline-none"
 				>
 					<option value="">--Select State--</option>
 					{stateOptions.map((option) => (
@@ -72,7 +70,7 @@ const SelectStateAndLGA = ({
 					{...register('lga', {
 						required: 'Please select your lga',
 					})}
-					className="input w-full h-[44px] rounded-md border border-gray px-6 text-base"
+					className="w-full px-3 my-2 py-2 text-lg inline-block font-normal text-gray-500 bg-clip-padding border-2 border-primary-light rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-primary focus:outline-none"
 				>
 					<option value="">--Select LGA--</option>
 					{lgaList.map((lga) => (
