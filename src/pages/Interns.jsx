@@ -76,7 +76,7 @@ const Interns = () => {
 				<LeftImage />
 
 				<div className="lg:w-1/2 w-full md:flex justify-center items-center bg-primary/30 ">
-					<div className="w-full font-josefin items-center justify-center flex flex-col h-full">
+					<div className="w-full font-josefin items-center justify-center flex flex-col h-full p-3 md:p-0">
 						<motion.div
 							initial={{ opacity: 0, scale: 0.8 }}
 							animate={{ opacity: 1, scale: 1 }}
@@ -99,7 +99,7 @@ const Interns = () => {
 											</div>
 										</motion.div>
 										<h1
-											className={`font-montserrat text-center font-[600] mt-3 text-blue-950 text-[28px]`}
+											className={`font-montserrat text-center font-[600] mt-3 text-blue-950 text-lg md:text-[28px]`}
 										>
 											Internship Registration
 										</h1>
