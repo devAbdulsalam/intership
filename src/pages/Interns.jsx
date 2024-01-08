@@ -308,7 +308,7 @@ const Interns = () => {
 													exit={{ opacity: 0 }}
 												>
 													<div
-														className={`mt-2 mb-3 show-program-info shadow p-3`}
+														className={`mt-2 mb-3 show-program-info shadow p-3 text-gray-700`}
 													>
 														<h2 className="text-primary font-semibold text-lg">{`${selectedProgram} Program Info:`}</h2>
 														<ul className="list-disc  ml-6">
