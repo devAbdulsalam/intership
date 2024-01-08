@@ -1,4 +1,5 @@
 import Social from './Social';
+import Typewriter from 'react-text-writer';
 import { motion } from 'framer-motion';
 const LeftImage = () => {
 	return (
@@ -10,18 +11,13 @@ const LeftImage = () => {
 					animate={{ x: 0 }}
 					transition={{ ease: 'easeOut', duration: 1, delay: 0.5 }}
 				>
-					<h2 className="mt-2 text-4xl tracking-wide font-bold">
-						Build, Launch and Scale
-					</h2>
-				</motion.div>
-				<motion.div
-					initial={{ x: -50 }}
-					animate={{ x: 0 }}
-					transition={{ ease: 'easeOut', duration: 1, delay: 0.5 }}
-				>
-					<h2 className="mt-4 text-4xl tracking-wide font-semibold">
-						Innovations
-					</h2>
+					<Typewriter
+						text={['Build', 'Launch', 'and Scale Innovations']}
+						speed={200}
+						isLoop
+						loopDelay={2000}
+						textClassName="mt-4 text-4xl tracking-wide font-semibold uppercase"
+					/>
 				</motion.div>
 			</div>
 			<div className="bottom-0 absolute p-4 text-center right-0 left-0 flex justify-center space-x-4">
