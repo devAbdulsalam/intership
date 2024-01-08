@@ -72,7 +72,7 @@ const Interns = () => {
 	};
 	return (
 		<>
-			<section className="min-h-screen flex items-stretch text-green-600 relative overflow-y-auto bg-no-repeat bg-cover bgImage">
+			<section className="min-h-screen flex items-stretch text-green-600 relative overflow-y-auto  ">
 				<LeftImage />
 
 				<div className="lg:w-1/2 w-full md:flex justify-center items-center bg-primary/30 ">

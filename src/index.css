@@ -3,12 +3,12 @@
 @tailwind utilities;
 .gem {
 	background: linear-gradient(
-			262.3deg,
-			rgba(19, 254, 142, 0.4),
-			rgba(63, 130, 98, 0) 100%,
-			rgba(63, 130, 98, 0) 0
-		),
-		/* linear-gradient(0deg, #064e3d, #190357); */
+		262.3deg,
+		rgba(19, 254, 142, 0.4),
+		rgba(63, 130, 98, 0) 100%,
+		rgba(63, 130, 98, 0) 0
+	);
+	/* linear-gradient(0deg, #064e3d, #190357); */
 }
 
 .gem:after {
@@ -22,8 +22,8 @@
 	background-image: url(./assets/whiteNoise.png);
 	background-size: 200px;
 }
-.bgImage{
-background-image: url(./assets/03.jpg);
+.bgImage {
+	background-image: url(./assets/03.jpg);
 }
 .debug {
 	border: 1px red solid;

@@ -3,9 +3,9 @@ import Social from './Social';
 import { motion } from 'framer-motion';
 const LeftImage = () => {
 	return (
-		<div className="lg:flex w-1/2 hidden relative items-center bgImage bg-cover">
-			<div className="absolute bg-primary/80 opacity-60 inset-0 z-0"></div>
-			<div className="w-full px-24 z-10 text-center text-white opacity-50">
+		<div className="lg:flex w-1/2 hidden relative items-center bgImage bg-cover bg-no-repeat">
+			<div className="absolute bg-primary/50 opacity-60 inset-0 z-0"></div>
+			<div className="w-full px-24 z-10 text-center text-white opacity-70">
 				<motion.div
 					initial={{ opacity: 0, scale: 0.5 }}
 					animate={{ opacity: 1, scale: 1 }}
