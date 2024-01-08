@@ -20,7 +20,7 @@ const ConfirmModal = ({ show, setShow, user, setUser }) => {
 						<h2 className="text-center font-semibold">{user}</h2>
 						<p className="text-center text-md">Welcome to the Stem family</p>
 						<p className="text-center mt-2 ">
-							We will get back to your as soon as posible
+							We will get back to your as soon as posable
 						</p>
 					</div>
 					<button

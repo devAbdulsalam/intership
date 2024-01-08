@@ -34,7 +34,7 @@ const SelectStateAndLGA = ({
 	return (
 		<div className="md:flex gap-2 w-full">
 			<div className="w-full">
-				<label htmlFor="state" className="text-gray-800 font-semibold">
+				<label htmlFor="state" className="font-montserrat text-blue-950 text-md text-black-main font-medium">
 					State of Origin
 				</label>
 				<select
@@ -45,9 +45,9 @@ const SelectStateAndLGA = ({
 						required: 'Please select your state of origin',
 					})}
 					onChange={handleSelectOptionChange}
-					className="w-full px-3 my-2 py-2 text-lg inline-block font-normal text-gray-500 bg-clip-padding border-2 border-primary-light rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-primary focus:outline-none"
+					className="mt-1 mb-3 p-[16px] w-full text-black h-[50px] border text-md font-medium "
 				>
-					<option value="">--Select State--</option>
+					<option value="">Select State</option>
 					{stateOptions.map((option) => (
 						<option key={option.value} value={option.value}>
 							{option.label}
@@ -59,7 +59,7 @@ const SelectStateAndLGA = ({
 				)}
 			</div>
 			<div className="w-full">
-				<label htmlFor="lga-select" className="text-gray-800 font-semibold">
+				<label htmlFor="lga-select" className="font-montserrat text-blue-950 text-md text-black-main font-medium">
 					Select an LGA:
 				</label>
 				<select
@@ -70,9 +70,9 @@ const SelectStateAndLGA = ({
 					{...register('lga', {
 						required: 'Please select your lga',
 					})}
-					className="w-full px-3 my-2 py-2 text-lg inline-block font-normal text-gray-500 bg-clip-padding border-2 border-primary-light rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-primary focus:outline-none"
+					className="mt-1 mb-3 p-[16px] w-full text-black h-[50px] border text-md font-medium "
 				>
-					<option value="">--Select LGA--</option>
+					<option value="">Select LGA</option>
 					{lgaList.map((lga) => (
 						<option key={lga} value={lga}>
 							{lga}
