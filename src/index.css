@@ -22,6 +22,9 @@
 	background-image: url(./assets/whiteNoise.png);
 	background-size: 200px;
 }
+.bgImage{
+background-image: url(./assets/03.jpg);
+}
 .debug {
 	border: 1px red solid;
 }
