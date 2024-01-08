@@ -222,7 +222,7 @@ const Interns = () => {
 														className={` mt-1 mb-3 text-md p-[16px] w-full text-black h-[50px] border text-md font-medium rounded-md`}
 														id="gender"
 														{...register('gender', {
-															required: 'Please enter your gender',
+															required: 'Please select your gender',
 														})}
 													>
 														<option value="">Select Gender</option>
