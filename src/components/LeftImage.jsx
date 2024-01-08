@@ -13,10 +13,10 @@ const LeftImage = () => {
 				>
 					<Typewriter
 						text={['Build', 'Launch', 'and Scale Innovations']}
-						speed={200}
+						speed={160}
 						isLoop
-						loopDelay={2000}
-						textClassName="mt-4 text-4xl tracking-wide font-semibold uppercase"
+						loopDelay={1500}
+						textClassName="mt-4 md:text-4xl lg:text-6xl tracking-wide font-semibold uppercase"
 					/>
 				</motion.div>
 			</div>
