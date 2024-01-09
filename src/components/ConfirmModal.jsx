@@ -11,7 +11,7 @@ const ConfirmModal = ({ show, setShow, user, setUser }) => {
 		<Modal show={show}>
 			<div className="transform overflow-hidden min-w-[400px] rounded-xl bg-white text-left align-middle shadow-xl transition-all font-josefin">
 				<div className="space-y-5 p-4">
-					<div className="flex justify-between">
+					<div className="">
 						<p className="font-semibold text-lg text-primary text-center">
 							Congratulation
 						</p>

@@ -3,7 +3,7 @@ const Social = () => {
 		<div className="w-full z-10 text-center flex justify-center gap-2 p-2">
 			<a
 				className="cursor-pointer"
-				href="http://"
+				href="https://twitter.com/stemlab_ng"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -19,7 +19,7 @@ const Social = () => {
 			</a>
 			<a
 				className="cursor-pointer"
-				href="http://"
+				href="https://web.facebook.com/stemlabNG"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -35,7 +35,7 @@ const Social = () => {
 			</a>
 			<a
 				className="cursor-pointer"
-				href="http://"
+				href="https://www.instagram.com/stemlab_ng/"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
